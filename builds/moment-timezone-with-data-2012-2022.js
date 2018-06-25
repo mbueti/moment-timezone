@@ -534,7 +534,7 @@
 		var zone = moment.defaultZone,
 			offset;
 
-		if (mom._z === undefined) {
+		if (mom._z === undefined || mom._z.utcOffset === undefined || typeof mom._z.utcOffset !== 'function') {
 			if (zone && needsOffset(mom) && !mom._isUTC) {
 				mom._d = moment.utc(mom._a)._d;
 				mom.utc().add(zone.parse(mom), 'minutes');
